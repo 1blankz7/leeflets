@@ -20,10 +20,8 @@ class ApplicationTest extends AbstractUnitTestCase {
         $factoryMock = m::mock(
             RouterFactory::class,
             ['__invoke' => $routerMock]);
-        new Application(['routes' => []], $factoryMock);
+        new Application($factoryMock, ['routes' => []]);
     }
-
-
 
     private function buildRouterMock() {
         $mockBuilder = $this->getMockBuilder(Router::class)
