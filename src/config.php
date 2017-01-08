@@ -1,5 +1,6 @@
 <?php
 
+use Leeflets\Controller\ErrorController;
 use Leeflets\Controller\HomeController;
 use Leeflets\Controller\SettingsController;
 use Leeflets\Controller\SignInController;
@@ -43,6 +44,15 @@ return [
                 'comparator' => Equal::class,
                 'controller' => SignInController::class,
                 'action'     => 'loginAction',
+            ],
+        ],
+        'error_404'    => [
+            'route'   => '/404',
+            'options' => [
+                'method'     => Get::class,
+                'comparator' => Equal::class,
+                'controller' => ErrorController::class,
+                'action'     => 'e404Action',
             ],
         ],
     ],

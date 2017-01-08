@@ -2,6 +2,10 @@
 
 namespace Leeflets\Core;
 
+/**
+ * Class Response
+ * @package Leeflets\Core
+ */
 class Response implements ResponseInterface {
 
     /**
@@ -10,12 +14,26 @@ class Response implements ResponseInterface {
     private $content;
 
     /**
+     * @var array
+     */
+    private $headers;
+
+    /**
+     * @var int
+     */
+    private $code;
+
+    /**
      * Response constructor.
      *
      * @param string $content
+     * @param array $headers
+     * @param int $code
      */
-    public function __construct($content) {
+    public function __construct($content, array $headers = [], $code = 200) {
         $this->content = $content;
+        $this->headers = $headers;
+        $this->code = $code;
     }
 
     /**
@@ -25,7 +43,10 @@ class Response implements ResponseInterface {
         return $this->content;
     }
 
+    /**
+     * @return array
+     */
     public function headers() {
-        return [];
+        return $this->headers;
     }
 }

@@ -14,17 +14,19 @@ use Widi\Components\Router\Request;
  *
  * @package Leeflets\Controller
  */
-class SignInController extends AbstractController {
+class SignInController extends AbstractController
+{
 
     /**
      * @param Request $request
      *
      * @return Response
      */
-    public function indexAction(Request $request) {
+    public function indexAction(Request $request)
+    {
         $loginForm = $this->getLoginForm();
 
-        if($this->session->exists('user')) {
+        if ($this->session->exists('user')) {
             $this->redirect('/');
         }
 
@@ -43,7 +45,8 @@ class SignInController extends AbstractController {
      *
      * @return Response
      */
-    public function loginAction(Request $request) {
+    public function loginAction(Request $request)
+    {
         $loginForm = $this->getLoginForm();
 
         // validate form
@@ -71,7 +74,8 @@ class SignInController extends AbstractController {
     /**
      * @return Form
      */
-    private function getLoginForm() {
+    private function getLoginForm()
+    {
         $form = new Form([
             'class' => 'login-container'
         ]);
@@ -97,7 +101,8 @@ class SignInController extends AbstractController {
      *
      * @return bool
      */
-    private function correctLogin($email, $password) {
+    private function correctLogin($email, $password)
+    {
         return $email === '1blankz7@googlemail.com' && $password === 'hello';
     }
 }

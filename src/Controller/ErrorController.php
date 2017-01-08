@@ -2,10 +2,18 @@
 
 namespace Leeflets\Controller;
 
-class ErrorController extends AbstractController {
+use Leeflets\Core\Response;
+use Widi\Components\Router\Request;
 
-    public function e404() {
-        header('HTTP/1.0 404 Not Found');
-		die('Not found.');
-	}
+/**
+ * Class ErrorController
+ * @package Leeflets\Controller
+ */
+class ErrorController extends AbstractController
+{
+
+    public function e404Action(Request $request)
+    {
+        return new Response('Not found', [], 404);
+    }
 }

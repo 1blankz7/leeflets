@@ -7,10 +7,13 @@ use Leeflets\Core\Session;
 use Leeflets\Core\SessionInterface;
 use Leeflets\View\View;
 use Twig_Error;
-use Twig_Error_Loader;
 
-abstract class AbstractController {
-
+/**
+ * Class AbstractController
+ * @package Leeflets\Controller
+ */
+abstract class AbstractController
+{
     /**
      * @var array
      */
@@ -19,21 +22,27 @@ abstract class AbstractController {
     /** @var  SessionInterface */
     protected $session;
 
-    public function __construct() {
+    /**
+     * AbstractController constructor.
+     */
+    public function __construct()
+    {
         $this->session = Session::init($_SESSION);
     }
 
     /**
      * @param array $config
      */
-    public function setConfig($config) {
+    public function setConfig($config)
+    {
         $this->config = $config;
     }
 
     /**
      * @return array
      */
-    protected function getBasicContext() {
+    protected function getBasicContext()
+    {
         $isLoggedIn = $this->session->exists('user');
 
         return [
@@ -49,17 +58,22 @@ abstract class AbstractController {
      *
      * @return Response
      */
-    protected function createHtmlResponse($templateName, $data) {
+    protected function createHtmlResponse($templateName, $data)
+    {
         try {
             $view = new View($this->config['one_pager_template_dir'], $templateName, $data);
 
             return new Response($view->toHtml());
-        } catch(Twig_Error $e) {
+        } catch (Twig_Error $e) {
             exit($e->getRawMessage());
         }
     }
 
-    protected function redirect($location) {
+    /**
+     * @param string $location
+     */
+    protected function redirect($location)
+    {
         header("Location: $location");
         exit();
     }
