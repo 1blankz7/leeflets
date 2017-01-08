@@ -1,0 +1,9 @@
+#leeflets-admin-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 100000;
+    background-color: #fff;
+}
